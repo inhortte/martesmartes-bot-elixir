@@ -8,6 +8,6 @@ config :app,
   quote_file: "/home/polaris/Dropbox/draining_the_pond/Three_Subject_Quotebook.txt"
 
 config :nadia,
-  token: "349544027:AAHFTlaQpagbrrjmLQUElpr0vVP5ynvjhUg"
+  token: ""
 
 import_config "#{Mix.env}.exs"
