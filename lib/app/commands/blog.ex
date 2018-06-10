@@ -18,11 +18,13 @@ defmodule App.Commands.Blog do
   def inline_goat() do
     Logger.log :info, "Inline query /goat"
     respuestas = Enum.map(1..11, fn(i) ->
+      thurk = Aphorisms.sentence_from_blog()
       %InlineQueryResult.Article{
 	id: "aphorism#{i}",
 	title: "aphorism ##{i}",
+	description: thurk,
 	input_message_content: %{
-	  message_text: Aphorisms.sentence_from_blog(),
+	  message_text: thurk,
 	},
       }
     end)

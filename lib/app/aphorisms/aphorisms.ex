@@ -18,7 +18,7 @@ defmodule App.Aphorisms.Aphorisms do
   end
 
   def sentence_from_text(text) do
-    Regex.scan(@blog_regex, text) |> Enum.map(&List.first/1) |> Enum.reject(&is_nil/1) |> Enum.filter(fn(s) -> !Regex.match?(@no_match, s) end) |> random_from_list
+    Regex.scan(@blog_regex, text) |> Enum.map(&List.first/1) |> Enum.reject(&is_nil/1) |> Enum.filter(fn(s) -> !Regex.match?(@no_match, s) end) |> random_from_list |> String.replace(~r/\n/, " ", global: true)
   end
 
   def sentence_from_blog() do
