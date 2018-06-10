@@ -74,7 +74,7 @@ defmodule App.Commands do
   # Be sure to enable inline mode first: https://core.telegram.org/bots/inline
   # Try by typping "@your_bot_name /what-is something"
   inline_query_command "goat" do
-    :ok = answer_inline_query Blog.inline_goat()
+    :ok = answer_inline_query(Blog.inline_goat(), cache_time: 1)
   end
 
   inline_query_command "what-is" do
