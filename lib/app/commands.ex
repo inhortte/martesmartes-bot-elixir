@@ -24,6 +24,7 @@ defmodule App.Commands do
   # You may split code to other modules using the syntax
   # "Module, :function" instead od "do..end"
   command "outside", Outside, :outside
+  command "goat", Blog, :goat
   # For the sake of this tutorial, I'll define everything here
 
   command "question" do
