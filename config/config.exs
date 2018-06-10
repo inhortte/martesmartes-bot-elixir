@@ -8,6 +8,6 @@ config :app,
   quote_file: "/home/polaris/Dropbox/draining_the_pond/Three_Subject_Quotebook.txt"
 
 config :nadia,
-  token: ""
+  token: System.get_env("TELEGRAM_TOKEN")
 
 import_config "#{Mix.env}.exs"

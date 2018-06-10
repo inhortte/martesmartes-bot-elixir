@@ -26,9 +26,6 @@ defmodule App.Commands do
   # "Module, :function" instead od "do..end"
   command "outside", Outside, :outside
   command "goat", Blog, :goat
-  inline_query_command "goat" do
-    :ok = answer_inline_query Blog.inline_goat()
-  end
   # For the sake of this tutorial, I'll define everything here
 
   command "question" do
@@ -76,6 +73,10 @@ defmodule App.Commands do
   # You may also want make commands when in inline mode.
   # Be sure to enable inline mode first: https://core.telegram.org/bots/inline
   # Try by typping "@your_bot_name /what-is something"
+  inline_query_command "goat" do
+    :ok = answer_inline_query Blog.inline_goat()
+  end
+
   inline_query_command "what-is" do
     Logger.log :info, "Inline Query Command /what-is"
 
@@ -135,11 +136,9 @@ defmodule App.Commands do
     :ok = answer_inline_query [
       %InlineQueryResult.Article{
         id: "1",
-        title: "Darude-Sandstorm Non non Biyori Renge Miyauchi Cover 1 Hour",
-        thumb_url: "https://img.youtube.com/vi/yZi89iQ11eM/3.jpg",
-        description: "Did you mean Darude Sandstorm?",
+        title: "You die the flame death.",
         input_message_content: %{
-          message_text: "https://www.youtube.com/watch?v=yZi89iQ11eM",
+          message_text: "Nada.",
         }
       }
     ]
