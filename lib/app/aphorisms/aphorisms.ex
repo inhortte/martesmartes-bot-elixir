@@ -14,6 +14,7 @@ defmodule App.Aphorisms.Aphorisms do
   end
 
   def random_from_list(l) do
+    :rand.seed(:exsplus, :erlang.now)
     Enum.random l
   end
 
