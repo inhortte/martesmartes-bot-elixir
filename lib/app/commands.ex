@@ -26,6 +26,9 @@ defmodule App.Commands do
   # "Module, :function" instead od "do..end"
   command "outside", Outside, :outside
   command "goat", Blog, :goat
+  inline_query_command "goat" do
+    :ok = answer_inline_query Blog.inline_goat()
+  end
   # For the sake of this tutorial, I'll define everything here
 
   command "question" do
@@ -85,7 +88,7 @@ defmodule App.Commands do
         input_message_content: %{
           message_text: "https://www.youtube.com/watch?v=ER97mPHhgtM",
         }
-      }
+}
     ]
   end
 

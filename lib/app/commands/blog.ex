@@ -14,4 +14,18 @@ defmodule App.Commands.Blog do
 
     send_message Aphorisms.sentence_from_blog()
   end
+
+  def inline_goat() do
+    Logger.log :info, "Inline query /goat"
+    respuestas = Enum.map(1..11, fn(i) ->
+      %InlineQueryResult.Article{
+	id: "aphorism#{i}",
+	title: "aphorism ##{i}",
+	input_message_content: %{
+	  message_text: Aphorisms.sentence_from_blog(),
+	},
+      }
+    end)
+    respuestas
+  end
 end
