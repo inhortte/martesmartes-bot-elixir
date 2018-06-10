@@ -3,6 +3,7 @@ defmodule App.Commands do
   use App.Commander
 
   alias App.Commands.Outside
+  alias App.Commands.Blog
 
   # You can create commands in the format `/command` by
   # using the macro `command "command"`.
