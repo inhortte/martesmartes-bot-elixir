@@ -4,6 +4,7 @@ defmodule App.Commands do
 
   alias App.Commands.Outside
   alias App.Commands.Blog
+  alias App.Commands.Quotebook
 
   # You can create commands in the format `/command` by
   # using the macro `command "command"`.
@@ -26,6 +27,7 @@ defmodule App.Commands do
   # "Module, :function" instead od "do..end"
   command "outside", Outside, :outside
   command "goat", Blog, :goat
+  command "quote", Quotebook, :quote
   # For the sake of this tutorial, I'll define everything here
 
   command "question" do
@@ -75,6 +77,9 @@ defmodule App.Commands do
   # Try by typping "@your_bot_name /what-is something"
   inline_query_command "goat" do
     :ok = answer_inline_query(Blog.inline_goat(), cache_time: 1)
+  end
+  inline_query_command "quote" do
+    :ok = answer_inline_query(Quotebook.inline_quote(), cache_time: 1)
   end
 
   inline_query_command "what-is" do
