@@ -7,16 +7,16 @@ defmodule App.Aphorisms.Quotes do
 
   def string_to_quote(s) do
     quotes = Regex.scan(@quote_regex, s) |> Enum.map(fn(s) -> List.first(s) |> String.replace(~r/\s+/, " ") end)
-    Logger.info quotes
+    # Logger.info quotes
     humans = Regex.scan(@human_regex, s) |> Enum.map(fn(s) -> List.first(s) |> String.slice(1..-2) |> String.trim end)
-    Logger.info humans
+    # Logger.info humans
     d = case d_scan = Regex.scan(@date_regex, s) do
 	  [] ->
 	    ["1970"]
 	  _ ->
 	    d_scan |> List.first |> List.first |> String.slice(1..-2) |> String.split(~r/\//)
 	end
-    Logger.info d
+    # Logger.info d
     date = case length(d) do
 	     1 ->
 	       y = case Integer.parse(Enum.at(d, 0)) do
@@ -62,5 +62,18 @@ defmodule App.Aphorisms.Quotes do
 
   def quotebook_to_quotes() do
     Application.get_env(:app, :quote_file) |> File.read! |> String.split(~r/\n/) |> split_into_quote_blocks |> Enum.map(&string_to_quote/1)
+  end
+  
+  def random_from_list(l) do
+    :rand.seed(:exsplus, :erlang.now)
+    Enum.random l
+  end
+
+  def random_quote() do
+    quote = quotebook_to_quotes() |> random_from_list
+    quotes = List.zip([quote[:quotes], quote[:humans]]) |> Enum.map(fn({q, h}) ->
+      "#{q} -#{h}"
+    end) |> Enum.join("\n")
+    "#{quotes}\n#{quote[:date].year}-#{quote[:date].month}-#{quote[:date].day}"
   end
 end
