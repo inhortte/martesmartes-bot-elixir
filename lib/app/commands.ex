@@ -153,7 +153,7 @@ defmodule App.Commands do
   # You may use it as a fallback.
   message do
     Logger.log :warn, "Did not match the message"
-    Logger.log :info, "Chat id: #{get_chat_id()}"
+    Logger.log :warn, "Chat id: #{get_chat_id()}"
     send_message "Sorry, I couldn't understand you"
   end
 end
