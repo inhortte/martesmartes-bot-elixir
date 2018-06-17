@@ -149,6 +149,7 @@ defmodule App.Commander do
 
   defmacro get_chat_id do
     quote do
+      IO.inspect var!(update)
       case var!(update) do
         %{inline_query: inline_query} when not is_nil(inline_query) ->
           inline_query.from.id
