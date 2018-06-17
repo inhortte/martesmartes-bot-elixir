@@ -24,8 +24,8 @@ defmodule App.Router do
 
   def generate_message_matcher(handler) do
     quote do
-      IO.inspect var!(update)
       def do_match_message(var!(update)) do
+	IO.inspect var!(update)
         handle_message unquote(handler), [var!(update)]
       end
     end
