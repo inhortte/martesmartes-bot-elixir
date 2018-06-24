@@ -9,6 +9,7 @@ defmodule App.Router do
       import App.Router
 
       def match_message(message) do
+	IO.puts "The message has been received"
 	IO.inspect message
         try do
           apply __MODULE__, :do_match_message, [message]
