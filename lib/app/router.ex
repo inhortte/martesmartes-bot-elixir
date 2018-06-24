@@ -9,6 +9,7 @@ defmodule App.Router do
       import App.Router
 
       def match_message(message) do
+	IO.inspect message
         try do
           apply __MODULE__, :do_match_message, [message]
         rescue
@@ -25,7 +26,6 @@ defmodule App.Router do
   def generate_message_matcher(handler) do
     quote do
       def do_match_message(var!(update)) do
-	IO.inspect var!(update)
         handle_message unquote(handler), [var!(update)]
       end
     end
