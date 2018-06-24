@@ -40,7 +40,7 @@ defmodule App.Poller do
     |> Enum.map(fn %{update_id: id} = message ->
       message
       |> process_message
-
+      Nadia.send_message id, "You are dead."
       id
     end)
     |> List.last
