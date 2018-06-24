@@ -38,11 +38,10 @@ defmodule App.Poller do
   defp process_messages({:ok, results}) do
     results
     |> Enum.map(fn %{update_id: id} = message ->
-      message
-      |> process_message
       IO.puts "Got a message"
       IO.inspect message
       Nadia.send_message id, "You are dead."
+#      message |> process_message
       id
     end)
     |> List.last
